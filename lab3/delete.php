@@ -1,4 +1,3 @@
-<!-- delete.php -->
 <!DOCTYPE html>
 <html lang="uk">
 <head>
