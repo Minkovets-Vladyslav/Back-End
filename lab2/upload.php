@@ -54,7 +54,10 @@ $_SESSION['photo'] = $uploadedFilePath;
         <p><strong>Пароль:</strong> <?php echo htmlspecialchars($_POST['password']); ?></p>
         <p><strong>Повторний пароль:</strong> <?php echo htmlspecialchars($_POST['confirm_password']); ?></p>
         <p><strong>Стать:</strong> <?php echo htmlspecialchars($_POST['gender']); ?></p>
-        <
+        <p><strong>Місто:</strong> <?php echo htmlspecialchars($_POST['city']); ?></p>
+        <p><strong>Улюблена гра:</strong> <?php echo htmlspecialchars(isset($_POST['games']) ? array_values($_POST['games'])[0] : "нема"); ?></p>
+        <p><strong>Про себе:</strong> <?php echo htmlspecialchars($_POST['about']); ?></p>
+        <p><strong>Фото:</strong> <?php echo $uploadedFilePath; ?></p>
 <?php
 echo "<br><a href='form.php'><button>Повернутися на головну сторінку</button></a>";
 ?>
