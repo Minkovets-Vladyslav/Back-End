@@ -61,13 +61,13 @@ require_once 'Handlers/TextFileHandler.php';
 use Handlers\TextFileHandler;
 
 echo "<br>TextFileHandler:<br>";
-TextFileHandler::writeToFile('file1.txt', 'Додавання тексту в файл 1');
-TextFileHandler::writeToFile('file2.txt', 'Додавання тексту в файл 2');
-TextFileHandler::writeToFile('file3.txt', 'Додавання тексту в файл 3');
+TextFileHandler::writeFile('file1.txt', 'Додавання тексту в файл 1');
+TextFileHandler::writeFile('file2.txt', 'Додавання тексту в файл 2');
+TextFileHandler::writeFile('file3.txt', 'Додавання тексту в файл 3');
 
-echo TextFileHandler::readFromFile('file1.txt') . "<br>";
-echo TextFileHandler::readFromFile('file2.txt') . "<br>";
-echo TextFileHandler::readFromFile('file3.txt') . "<br>";
+echo TextFileHandler::readFile('file1.txt') . "<br>";
+echo TextFileHandler::readFile('file2.txt') . "<br>";
+echo TextFileHandler::readFile('file3.txt') . "<br>";
 
 TextFileHandler::clearFile('file1.txt');
 echo "Вміст файлу після очищення: " . TextFileHandler::readFromFile('file1.txt') . "<br>";
