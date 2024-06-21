@@ -1,5 +1,5 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = isset($_POST['name']) ? $_POST['name'] : '';
     $comment = isset($_POST['comment']) ? $_POST['comment'] : '';
 
@@ -11,4 +11,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 header('Location: index.php');
 exit;
-?>
+

@@ -1,22 +1,15 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $filename = isset($_POST['filename']) ? $_POST['filename'] : '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $fileToSort = 'words.txt';
+    $sortedFile = 'sorted_words.txt';
 
-    if (!empty($filename)) {
-        $content = file_get_contents($filename);
-
-        $words = explode(' ', $content);
-
+    if (file_exists($fileToSort)) {
+        $words = explode(' ', file_get_contents($fileToSort));
         sort($words);
-
-        $sorted_filename = 'sorted_' . basename($filename);
-
-        file_put_contents($sorted_filename, implode(' ', $words));
-
-        echo "Слова успішно впорядковані та збережені у файлі: <a href='$sorted_filename'>$sorted_filename</a><br>";
+        file_put_contents($sortedFile, implode(PHP_EOL, $words));
+        echo "Слова відсортовано і збережено у файлі $sortedFile.";
+    } else {
+        echo "Файл $fileToSort не знайдено.";
     }
 }
 
-header('Location: index.php');
-exit;
-?>
