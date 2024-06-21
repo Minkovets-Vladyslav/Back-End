@@ -70,7 +70,9 @@ echo TextFileHandler::readFile('file2.txt') . "<br>";
 echo TextFileHandler::readFile('file3.txt') . "<br>";
 
 TextFileHandler::clearFile('file1.txt');
-echo "Вміст файлу після очищення: " . TextFileHandler::readFromFile('file1.txt') . "<br>";
+TextFileHandler::clearFile('file2.txt');
+TextFileHandler::clearFile('file3.txt');
+echo "Вміст файлу після очищення: " . TextFileHandler::readFile('file1.txt') . "<br>";
 
 $circle1 = new Circle(0, 0, 5);
 $circle2 = new Circle(4, 4, 3);
