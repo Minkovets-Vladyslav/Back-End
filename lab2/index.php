@@ -27,6 +27,11 @@
             background-color: white;
             overflow: hidden;
         }
+
+        button[type="submit"]{
+
+        }
+
     </style>
 </head>
 <body>
@@ -36,16 +41,16 @@
     <h3>1. Заміна символів</h3>
 
     <form method="post">
-        <label>Текст:</label>
-        <input type="text" name="text"><br>
-        <label>Знайти:</label>
-        <input type="text" name="find"><br>
-        <label>Замінити:</label>
-        <input type="text" name="replace"><br>
-        <input type="submit" value="Замінити">
+        <label for="text">Текст:</label>
+        <input type="text" name="text" id="text"><br>
+        <label for="find">Знайти:</label>
+        <input type="text" name="find" id="find"><br>
+        <label for="replace">Замінити:</label>
+        <input type="text" name="replace" id="replace"><br>
+        <button type="submit">Замінити</button>
     </form>
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["text"]) && isset($_POST["find"]) && isset($_POST["replace"])) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["text"]) && isset($_POST["find"]) && isset($_POST["replace"])) {
         $text = $_POST["text"];
         $find = $_POST["find"];
         $replace = $_POST["replace"];
@@ -57,12 +62,12 @@
 
     <h3>2. Сортування міст</h3>
     <form method="post">
-        <label>Назви міст:</label>
-        <input type="text" name="cities"><br>
-        <input type="submit" value="Сортувати">
+        <label for="cities">Назви міст:</label>
+        <input type="text" name="cities" id="cities"><br>
+        <button type="submit">Сортувати</button>
     </form>
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cities"])) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["cities"])) {
         $cities = explode(" ", $_POST["cities"]);
         sort($cities);
         $result = implode(" ", $cities);
@@ -82,14 +87,14 @@
 
     <h3>4. Визначення кількості днів між датами</h3>
     <form method="post">
-        <label>Дата 1 (День-Місяць-Рік):</label>
-        <input type="text" name="date1"><br>
-        <label>Дата 2 (День-Місяць-Рік):</label>
-        <input type="text" name="date2"><br>
-        <input type="submit" value="Обчислити">
+        <label for="date1">Дата 1 (День-Місяць-Рік):</label>
+        <input type="text" name="date1" id="date1"><br>
+        <label for="date2">Дата 2 (День-Місяць-Рік):</label>
+        <input type="text" name="date2" id="date2"><br>
+        <button type="submit" value="calculate">Обчислити</button>
     </form>
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["date1"]) && isset($_POST["date2"])) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["date1"]) && isset($_POST["date2"])) {
         $date1 = $_POST["date1"];
         $date2 = $_POST["date2"];
         $datetime1 = DateTime::createFromFormat('d-m-Y', $date1);
@@ -101,18 +106,17 @@
 
     <h3>5. Генератор паролів</h3>
     <form method="post">
-        <label>Довжина паролю:</label>
-        <input type="number" name="length" value="10"><br>
-        <input type="submit" value="Згенерувати">
+        <label for="length">Довжина паролю:</label>
+        <input type="number" name="length" id="length" value="10"><br>
+        <button type="submit">Згенерувати</button>
     </form>
     <?php
     function generatePassword($length) {
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
-        $password = substr(str_shuffle($chars), 0, $length);
-        return $password;
+        return substr(str_shuffle($chars), 0, $length);
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["length"])) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["length"])) {
         $length = $_POST["length"];
         $password = generatePassword($length);
         echo "Випадковий пароль: $password";
@@ -121,9 +125,9 @@
 
     <h3>Перевірка міцності пароля</h3>
     <form method="post">
-        <label>Пароль:</label>
-        <input type="text" name="password"><br>
-        <input type="submit" value="Перевірити">
+        <label for="password">Пароль:</label>
+        <input type="text" name="password" id="password"><br>
+        <button type="submit">Перевірити</button>
     </form>
     <?php
     function isStrongPassword($password) {
@@ -135,7 +139,7 @@
         return $containsUppercase && $containsLowercase && $containsDigit && $containsSpecialChar && $isLongEnough;
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["password"])) {
         $password = $_POST["password"];
         if (isStrongPassword($password)) {
             echo "Пароль достатньо міцний.";
@@ -220,26 +224,26 @@
     );
 
     function sortAssociativeArray(&$array, $sortBy) {
-        if ($sortBy == "name") {
+        if ($sortBy === "name") {
             ksort($array);
-        } elseif ($sortBy == "age") {
+        } elseif ($sortBy === "age") {
             asort($array);
         }
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sortBy"])) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["sortBy"])) {
         $sortBy = $_POST["sortBy"];
         sortAssociativeArray($users, $sortBy);
     }
     ?>
 
     <form method="post">
-        <label>Сортувати за:</label>
-        <select name="sortBy">
+        <label for="sortBy">Сортувати за:</label>
+        <select name="sortBy" id="sortBy">
             <option value="name">Ім'ям</option>
             <option value="age">Віком</option>
         </select>
-        <input type="submit" value="Сортувати">
+        <button type="submit">Сортувати</button>
     </form>
     <br>
     <?php
@@ -251,27 +255,18 @@
 <button class="accordion">Завдання 3. Робота з формою</button>
 <div class="panel">
     <h3>Форма завантаження файлів</h3>
-
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <label>Ім'я:</label>
-        <input type="text" name="name"><br>
-        <label>Email:</label>
-        <input type="email" name="email"><br>
-        <label>Фотографія:</label>
-        <input type="file" name="photo"><br>
-        <input type="submit" value="Завантажити">
-    </form>
+    <a href='form.php'><button>Перейти до форми</button></a>
 </div>
 
 <button class="accordion">Завдання 4. Робота з функціями</button>
 <div class="panel">
     <h3>Функції</h3>
     <form method="post" action="calculate.php">
-        <label>Число x:</label>
-        <input type="text" name="x"><br>
-        <label>Число y:</label>
-        <input type="text" name="y"><br>
-        <input type="submit" value="Обчислити">
+        <label for="x">Число x:</label>
+        <input type="text" name="x" id="x"><br>
+        <label for="y">Число y:</label>
+        <input type="text" name="y" id="y"><br>
+        <button type="submit">Обчислити</button>
     </form>
 </div>
 
@@ -291,7 +286,6 @@
         });
     }
 </script>
-
 
 </body>
 </html>
