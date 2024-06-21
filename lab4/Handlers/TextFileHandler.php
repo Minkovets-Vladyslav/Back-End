@@ -1,8 +1,11 @@
 <?php
+
+namespace Handlers;
 /**
  * Клас для роботи з текстовими файлами
  */
-class TextFileHandler {
+class TextFileHandler
+{
     /** @var string $dir Директорія для файлів */
     public static $dir = "text/";
 
@@ -11,7 +14,8 @@ class TextFileHandler {
      * @param string $filename Назва файлу для читання
      * @return string|null Вміст файлу або null, якщо файл не знайдено
      */
-    public static function readFile($filename) {
+    public static function readFile($filename)
+    {
         $file_path = self::$dir . $filename;
         if (file_exists($file_path)) {
             return file_get_contents($file_path);
@@ -25,7 +29,8 @@ class TextFileHandler {
      * @param string $content Зміст для запису
      * @return bool true, якщо запис успішний, інакше false
      */
-    public static function writeFile($filename, $content) {
+    public static function writeFile($filename, $content)
+    {
         $file_path = self::$dir . $filename;
         return file_put_contents($file_path, $content, FILE_APPEND) !== false;
     }
@@ -35,7 +40,8 @@ class TextFileHandler {
      * @param string $filename Назва файлу для очищення
      * @return bool true, якщо очищення успішне, інакше false
      */
-    public static function clearFile($filename) {
+    public static function clearFile($filename)
+    {
         $file_path = self::$dir . $filename;
         return file_put_contents($file_path, '') !== false;
     }

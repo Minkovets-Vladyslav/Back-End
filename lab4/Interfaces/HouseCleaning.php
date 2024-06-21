@@ -1,9 +1,11 @@
 <?php
 
+namespace Interfaces;
 /**
  * Інтерфейс для прибирання будинку
  */
-interface HouseCleaning {
+interface HouseCleaning
+{
     /**
      * Метод для прибирання кімнати
      * @return string Рядок з результатом прибирання кімнати

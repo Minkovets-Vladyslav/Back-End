@@ -1,9 +1,14 @@
 <?php
 
+namespace Models;
+
+use Interfaces\HouseCleaning;
+
 /**
  * Клас програміста, який успадковує клас Human і реалізує інтерфейс HouseCleaning
  */
-class Programmer extends Human implements HouseCleaning {
+class Programmer extends Human implements HouseCleaning
+{
     /** @var array $programmingLanguages Масив з мовами програмування */
     private $programmingLanguages;
     /** @var int $experience Досвід роботи */
@@ -13,7 +18,8 @@ class Programmer extends Human implements HouseCleaning {
      * Отримує масив з мовами програмування
      * @return array Масив з мовами програмування
      */
-    public function getProgrammingLanguages() {
+    public function getProgrammingLanguages()
+    {
         return $this->programmingLanguages;
     }
 
@@ -21,7 +27,8 @@ class Programmer extends Human implements HouseCleaning {
      * Додає нову мову програмування до масиву
      * @param string $language Нова мова програмування
      */
-    public function addProgrammingLanguage($language) {
+    public function addProgrammingLanguage($language)
+    {
         $this->programmingLanguages[] = $language;
     }
 
@@ -29,7 +36,8 @@ class Programmer extends Human implements HouseCleaning {
      * Отримує значення досвіду роботи
      * @return int Досвід роботи
      */
-    public function getExperience() {
+    public function getExperience()
+    {
         return $this->experience;
     }
 
@@ -37,7 +45,8 @@ class Programmer extends Human implements HouseCleaning {
      * Встановлює значення досвіду роботи
      * @param int $experience Нове значення для досвіду роботи
      */
-    public function setExperience($experience) {
+    public function setExperience($experience)
+    {
         $this->experience = $experience;
     }
 
@@ -45,7 +54,8 @@ class Programmer extends Human implements HouseCleaning {
      * Реалізація методу прибирання кімнати з інтерфейсу HouseCleaning
      * @return string Рядок з результатом прибирання кімнати
      */
-    public function cleanRoom() {
+    public function cleanRoom()
+    {
         return "Програміст прибирає кімнату";
     }
 
@@ -53,7 +63,8 @@ class Programmer extends Human implements HouseCleaning {
      * Реалізація методу прибирання кухні з інтерфейсу HouseCleaning
      * @return string Рядок з результатом прибирання кухні
      */
-    public function cleanKitchen() {
+    public function cleanKitchen()
+    {
         return "Програміст прибирає кухню";
     }
 }
